@@ -1,0 +1,12 @@
+D:\Munka\Work\cardatabase\src\main\java\hu\cardatabase\service\domain\CarsDto.java
+D:\Munka\Work\cardatabase\src\main\java\hu\cardatabase\service\impl\OwnerServiceImpl.java
+D:\Munka\Work\cardatabase\src\main\java\hu\cardatabase\service\impl\ModelMapper.java
+D:\Munka\Work\cardatabase\src\main\java\hu\cardatabase\persistence\entitymanager\CarsDao.java
+D:\Munka\Work\cardatabase\src\main\java\hu\cardatabase\service\CarsService.java
+D:\Munka\Work\cardatabase\src\main\java\hu\cardatabase\service\impl\CarsServiceImpl.java
+D:\Munka\Work\cardatabase\src\main\java\hu\cardatabase\controller\OwnerBean.java
+D:\Munka\Work\cardatabase\src\main\java\hu\cardatabase\persistence\entity\OwnerEntity.java
+D:\Munka\Work\cardatabase\src\main\java\hu\cardatabase\service\OwnerService.java
+D:\Munka\Work\cardatabase\src\main\java\hu\cardatabase\service\domain\OwnerDto.java
+D:\Munka\Work\cardatabase\src\main\java\hu\cardatabase\persistence\entitymanager\OwnerDao.java
+D:\Munka\Work\cardatabase\src\main\java\hu\cardatabase\persistence\entity\CarsEntity.java

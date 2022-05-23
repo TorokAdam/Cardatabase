@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<f:view>
+    <h:head>
+    </h:head>
+    <h:body>
+        <p:outputPanel>
+
+            <link rel="stylesheet" type="text/css" href="resources/index.css"/>
+
+            <h:form>
+                <div class="card">
+                    <p:dataTable id="ownerTable" var="owner"
+                                 value="#{ownerBean.ownerDtos}"
+                                 widgetVar="ownerTable"
+                                 paginator="true" rows="20"
+                                 allowUnsorting="true"
+                                 paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                                 rowsPerPageTemplate="10,20,50,100"
+                                 selectionMode="single"
+                                 selection="#{ownerBean.selectedOwner}" rowKey="#{owner.id}"
+                                 style="width: 40%; display: inline-block; vertical-align: top; margin: auto; margin-left: 5% !important;">
+
+                        <p:ajax event="rowSelect" listener="#{ownerBean.rowSelect()}" update="@form"/>
+                        <p:ajax event="rowUnselect" listener="#{ownerBean.rowUnSelect()}" update="@form"/>
+
+                        <f:facet name="header">
+                            <p:outputPanel>
+                                <h:outputText value="Owners"/>
+                            </p:outputPanel>
+                        </f:facet>
+                        <p:column headerText="ID">
+                            <h:outputText value="#{owner.id}"/>
+                        </p:column>
+
+                        <p:column headerText="Name">
+                            <h:outputText value="#{owner.lastName} #{owner.firstName}"/>
+                        </p:column>
+
+                        <p:column headerText="City">
+                            <h:outputText value="#{owner.city}"/>
+                        </p:column>
+
+                        <p:column headerText="Address">
+                            <h:outputText value="#{owner.address}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:panelGrid columns="4" id="panel_grid">
+
+                                <p:outputLabel value="First Name" for="fname"/>
+                                <p:inputText id="fname" value="#{ownerBean.newOwnerDto.firstName}"
+                                             style="width: 100%;"/>
+
+                                <p:outputLabel value="Last Name" for="lname"/>
+                                <p:inputText id="lname" value="#{ownerBean.newOwnerDto.lastName}" style="width: 100%;"/>
+
+                                <p:outputLabel value="City" for="city"/>
+                                <p:inputText id="city" value="#{ownerBean.newOwnerDto.city}" style="width: 100%;"/>
+
+                                <p:outputLabel value="Address" for="address"/>
+                                <p:inputText id="address" value="#{ownerBean.newOwnerDto.address}"
+                                             style="width: 100%;"/>
+
+                                <f:facet name="footer">
+                                    <p:panelGrid columns="2">
+                                        <p:commandButton value="Save" action="#{ownerBean.save()}" update="@form"
+                                                         style="width: 80%; margin: auto; display:block; "/>
+                                        <p:commandButton value="Delete" disabled="#{ownerBean.newOwnerDto.id eq null}"
+                                                         action="#{ownerBean.delete()}" update="@form"
+                                                         style=" display:block; width: 80%; margin: auto;"/>
+                                    </p:panelGrid>
+                                </f:facet>
+                            </p:panelGrid>
+                        </f:facet>
+                    </p:dataTable>
+                    <p:dataTable id="carTable" var="car"
+                                 value="#{ownerBean.carsDtos}"
+                                 widgetVar="carTable"
+                                 paginator="true" rows="20"
+                                 allowUnsorting="true"
+                                 paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                                 rowsPerPageTemplate="10,20,50,100"
+                                 selectionMode="single"
+                                 selection="#{ownerBean.selectedCar}" rowKey="#{car.id}"
+                                 style="width: 40%; display: inline-block; vertical-align: top; margin: auto; margin-left: 5% !important;">
+
+
+                        <p:ajax event="rowSelect" listener="#{ownerBean.rowSelectCar()}" update="@form"/>
+                        <p:ajax event="rowUnselect" listener="#{ownerBean.rowUnSelectCar()}" update="@form"/>
+
+                        <f:facet name="header">
+                            <p:outputPanel>
+                                <h:outputText value="Cars"/>
+                            </p:outputPanel>
+                        </f:facet>
+                        <p:column headerText="ID">
+                            <h:outputText value="#{car.id}"/>
+                        </p:column>
+
+                        <p:column headerText="Owner">
+                            <h:outputText value="#{car.owner.lastName} #{car.owner.firstName}"/>
+                        </p:column>
+
+                        <p:column headerText="LP NUMBER">
+                            <h:outputText value="#{car.lpNumber}"/>
+                        </p:column>
+
+                        <p:column headerText="Make">
+                            <h:outputText value="#{car.make}"/>
+                        </p:column>
+
+                        <p:column headerText="Model">
+                            <h:outputText value="#{car.model}"/>
+                        </p:column>
+
+                        <p:column headerText="Color">
+                            <h:outputText value="#{car.color}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:panelGrid columns="6">
+
+
+                                <p:outputLabel value="Owner" for="ow"/>
+                                <p:selectOneMenu id="ow" value="#{ownerBean.selectedCarOwnerId}" effect="fold"
+                                                 editable="true" style="width: 100%;">
+                                    <f:selectItem itemLabel="Select One" itemValue=""/>
+                                    <f:selectItems value="#{ownerBean.ownerDtos}" var="ow"
+                                                   itemLabel="#{ow.lastName} #{ow.firstName}" itemValue="#{ow.id}"/>
+                                </p:selectOneMenu>
+
+
+                                <p:outputLabel value="LP Number" for="lpn"/>
+                                <p:inputMask id="lpn" value="#{ownerBean.newCarDto.lpNumber}" mask="AAA-999"
+                                             style="width: 100%;"/>
+
+                                <p:outputLabel value="Make" for="make"/>
+                                <p:inputText id="make" value="#{ownerBean.newCarDto.make}" style="width: 100%;"/>
+
+                                <p:outputLabel value="Model" for="model"/>
+                                <p:inputText id="model" value="#{ownerBean.newCarDto.model}" style="width: 100%;"/>
+
+                                <p:outputLabel value="Color" for="color"/>
+                                <p:inputText id="color" value="#{ownerBean.newCarDto.color}" style="width: 100%;"/>
+
+                                <f:facet name="footer">
+                                    <p:panelGrid columns="2">
+                                        <p:commandButton value="Save" action="#{ownerBean.saveCar()}" update="@form"
+                                                         style="width: 80%; margin: auto; display:block; "/>
+                                        <p:commandButton value="Delete" disabled="#{ownerBean.newCarDto.id eq null}"
+                                                         action="#{ownerBean.deleteCar()}" update="@form"
+                                                         style=" display:block; width: 80%; margin: auto;"/>
+                                    </p:panelGrid>
+                                </f:facet>
+                            </p:panelGrid>
+                        </f:facet>
+                    </p:dataTable>
+                </div>
+            </h:form>
+        </p:outputPanel>
+    </h:body>
+</f:view>
+</html>

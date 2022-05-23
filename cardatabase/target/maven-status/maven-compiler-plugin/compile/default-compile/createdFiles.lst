@@ -1,0 +1,16 @@
+hu\cardatabase\service\impl\OwnerServiceImpl$2.class
+hu\cardatabase\service\impl\CarsServiceImpl.class
+hu\cardatabase\persistence\entitymanager\CarsDao.class
+hu\cardatabase\persistence\entity\OwnerEntity.class
+hu\cardatabase\service\impl\OwnerServiceImpl.class
+hu\cardatabase\service\impl\CarsServiceImpl$2.class
+hu\cardatabase\service\domain\OwnerDto.class
+hu\cardatabase\service\CarsService.class
+hu\cardatabase\service\impl\ModelMapper.class
+hu\cardatabase\service\OwnerService.class
+hu\cardatabase\service\domain\CarsDto.class
+hu\cardatabase\persistence\entity\CarsEntity.class
+hu\cardatabase\persistence\entitymanager\OwnerDao.class
+hu\cardatabase\service\impl\CarsServiceImpl$1.class
+hu\cardatabase\controller\OwnerBean.class
+hu\cardatabase\service\impl\OwnerServiceImpl$1.class
